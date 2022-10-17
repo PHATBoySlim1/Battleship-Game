@@ -3,8 +3,7 @@ import java.util.Random;
 public class BattleShip extends AbstractBattleShip {
     Random rand = new Random();
 
-    //Set name method
-    private void setName(String name) {
+    public BattleShip(String name) {
         this.name = name;
 
         int randomNum = rand.nextInt(2);
