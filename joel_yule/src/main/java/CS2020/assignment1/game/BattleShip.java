@@ -1,58 +1,50 @@
+package CS2020.assignment1.game; 
 import java.util.Random;
 
 public class BattleShip extends AbstractBattleShip {
     Random rand = new Random();
 
-    public BattleShip(String name) {
-        this.name = name;
+    public BattleShip(String n) {
+        name = n;
 
         int randomNum = rand.nextInt(2);
 
         //Sets the random orientation of the ship
         if(randomNum == 1){
-            this.shipOrientation = "vertical";
+            shipOrientation = "vertical";
         }
         else{
-            this.shipOrientation = "horizontal";
+            shipOrientation = "horizontal";
         }
     }
 
-    private void setHits(int numberOfHits){
-        this.numberOfHits = numberOfHits;
+    public void setHits(int numberOfHits){
+        hits = numberOfHits;
     }
 
-    private void setShipCoordinates(int [][] coordinates){
-        this.shipCoordinates = coordinates
+    public void setShipCoordinates(int [][] coordinates){
+        shipCoordinates = coordinates;
     }
 
-    private String getName() {return name;}
-    private int getHits() {return hits;}
-    private String getShipOrientation(){return shipOrientation;}
-    private int getShipCoordinates(){return shipCoordinates;}
+    public String getName() {return name;}
+    public int getHits() {return hits;}
+    public String getShipOrientation(){return shipOrientation;}
+    public int[][] getShipCoordinates(){return shipCoordinates;}
 
-    private boolean checkAttack(int row, int column){
-        if(this.numberOfHits == 3){
+    public boolean checkAttack(int row, int column){
+        if(hits == 3){
             return false;
         }
-        else if(this.numberOfHits < 3){
+        else {
             //Loops for number of available hits left on ship
-            for(int i=0;i<=this.numberOfHits;i++){
-                //If row passed into the method is equal to any of the row coordinates of the ship
-                if(row == this.shipCoordinates[i]){
-                    //Loops for number of available hits left on ship
-                    for(int j=0;j<=this.numberOfHits;j++){
-                        //If column passed into the method is equal to any of the column coordinates of the ship
-                        if(column == this.shipCoordinates[i][j]){
-                            return true;
-                        }
-                    }
-                }
-                else{
-                    return false;
+            for(int i=0;i<(3-hits);i++){
+                //Checks the passed coordinates against the ships coordinates
+                if(shipCoordinates[i][0] == row && shipCoordinates[i][1] == column){
+                    setHits(hits+1);
+                    return true;
                 }
             }
         }
+        return false;
     }
-
-
 }
