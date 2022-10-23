@@ -13,6 +13,7 @@ public class GameGrid extends AbstractGameGrid {
         numberOfShips = noOfShips;
         gameGrid = new String[width][height];
         initializeGrid();
+        generateShips(numberOfShips);
     }
 
     public void initializeGrid() {
@@ -22,42 +23,46 @@ public class GameGrid extends AbstractGameGrid {
             }
         }
     }
-
+    
     public void generateShips(int numberOfShips) {
-        BattleShip[] ships = new BattleShip[numberOfShips];
-        for(int i=0;i<numberOfShips;i++){
-            ships[i] = new BattleShip("Ship "+i);
+        ships = new AbstractBattleShip[numberOfShips];
+        for(int i=0;i<ships.length;i++) {
+            ships[i] = new BattleShip("Ship "+(i+1));
+            placeShip(ships[i]);
         }
     }
 
     public void placeShip(AbstractBattleShip ship) {
-        for(int i=0;i<numberOfShips;i++) {
-            int randomX = rand.nextInt(width);
-            int randomY = rand.nextInt(height);
+        int randomX = rand.nextInt(width);
+        int randomY = rand.nextInt(height);
+        String shipOrientation = ship.getShipOrientation();
 
-            if(ships[i].getShipOrientation() == "horizontal"){
-                if(randomX-2 < 0){
-                    gameGrid[randomX][randomY] = "*";
-                    gameGrid[randomX+1][randomY] = "*";
-                    gameGrid[randomX+2][randomY] = "*";
+        if(shipOrientation == "horizontal"){
+            if((randomX-2) < 0){
+                for(int i=0;i<3;i++){
+                    gameGrid[randomX+i][randomY] = "*";
                 }
-                else if(randomX+2>width){
-                    gameGrid[randomX][randomY] = "*";
-                    gameGrid[randomX-1][randomY] = "*";
-                    gameGrid[randomX-2][randomY] = "*";
-                }
+                ship.setShipCoordinates(new int [][]{new int[]{randomX,randomY},new int[]{randomX+1,randomY},new int[]{randomX+2,randomY}});
             }
-            else if(ships[i].getShipOrientation() == "vertical"){
-                if(randomY-2 < 0){
-                    gameGrid[randomX][randomY] = "*";
-                    gameGrid[randomX][randomY+1] = "*";
-                    gameGrid[randomX][randomY+2] = "*";
+            else if((randomX+2) > width){
+                for(int i=0;i<3;i++){
+                    gameGrid[randomX-i][randomY] = "*";
                 }
-                else if(randomY+2 > height){
-                    gameGrid[randomX][randomY] = "*";
-                    gameGrid[randomX][randomY-1] = "*";
-                    gameGrid[randomX][randomY-2] = "*";
+                ship.setShipCoordinates(new int[][]{new int[]{randomX,randomY},new int[]{randomX-1,randomY},new int []{randomX-2,randomY}});
+            }
+        }
+        else if(shipOrientation == "vertical"){
+            if((randomY-2) < 0){
+                for(int i=0;i<3;i++){
+                    gameGrid[randomX][randomY-i] = "*";
                 }
+                ship.setShipCoordinates(new int[][]{new int[]{randomX,randomY},new int[]{randomX,randomY+1},new int []{randomX,randomY+2}});
+            }
+            else if((randomY+2) > height){
+                for(int i=0;i<3;i++){
+                    gameGrid[randomX][randomY+i] = "*";
+                }
+                ship.setShipCoordinates(new int[][]{new int[]{randomX,randomY},new int[]{randomX,randomY-1},new int []{randomX,randomY-2}});
             }
         }
     }

@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: CS2020.assignment1.game.GameTests
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.008 s <<< FAILURE! - in CS2020.assignment1.game.GameTests
-t2_2(CS2020.assignment1.game.GameTests)  Time elapsed: 0.001 s  <<< FAILURE!
-java.lang.AssertionError: [47m[30mT2.2: Are you generating the ships based on the parameter passed to the constructor of GameGrid? Do you generate the names of ships as specifiied?   [0mjava.lang.NullPointerException
-	at CS2020.assignment1.game.GameTests.t2_2(GameTests.java:196)
-
