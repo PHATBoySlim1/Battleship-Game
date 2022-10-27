@@ -57,14 +57,14 @@ public class GameGrid extends AbstractGameGrid {
         else if(ship.shipOrientation == "vertical"){
             for(int i=0;i<3;i++){
                 if((randomY-2) < 0){
-                    gameGrid[randomX][randomY-i] = "*";
-                    shipCoords[i][0] = randomX;
-                    shipCoords[i][1] = (randomY-i);
-                }
-                else if(randomY+2 > gameGrid[0].length){
                     gameGrid[randomX][randomY+i] = "*";
                     shipCoords[i][0] = randomX;
                     shipCoords[i][1] = (randomY+i);
+                }
+                else if(randomY+2 > gameGrid[0].length){
+                    gameGrid[randomX][randomY-i] = "*";
+                    shipCoords[i][0] = randomX;
+                    shipCoords[i][1] = (randomY-i);
                 }
                 else{
                     gameGrid[randomX][randomY-i] = "*";
