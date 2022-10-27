@@ -5,25 +5,25 @@ public class BattleShip extends AbstractBattleShip {
     Random rand = new Random();
 
     public BattleShip(String n) {
-        name = n;
+        this.name = n;
 
         int randomNum = rand.nextInt(2);
 
         //Sets the random orientation of the ship
         if(randomNum == 1){
-            shipOrientation = "vertical";
+            this.shipOrientation = "vertical";
         }
         else{
-            shipOrientation = "horizontal";
+            this.shipOrientation = "horizontal";
         }
     }
 
     public void setHits(int numberOfHits){
-        hits = numberOfHits;
+        this.hits = numberOfHits;
     }
 
     public void setShipCoordinates(int [][] coordinates){
-        shipCoordinates = coordinates;
+        this.shipCoordinates = coordinates;
     }
 
     public String getName() {return name;}
