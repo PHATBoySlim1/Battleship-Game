@@ -7,11 +7,11 @@ import org.junit.Test;
 import CS2020.assignment1.game.AbstractGameGrid;
 import CS2020.assignment1.game.BattleShip;
 
-//import CS2020.assignment1.game.Game;
-//import CS2020.assignment1.game.GameControls;
+import CS2020.assignment1.game.Game;
+import CS2020.assignment1.game.GameControls;
 import CS2020.assignment1.game.GameGrid;
-//import CS2020.assignment1.game.OpponentGameGrid;
-//import CS2020.assignment1.game.PlayerGameGrid;
+import CS2020.assignment1.game.OpponentGameGrid;
+import CS2020.assignment1.game.PlayerGameGrid;
 
 import org.junit.Before;
 import org.junit.After;
@@ -44,7 +44,6 @@ public class GameTests {
 	    }
 
 		  
-	/*   
 	@Test
 	public void t1_1_a() {
 		BattleShip ship = new BattleShip ("Ship"); 
@@ -78,8 +77,7 @@ public class GameTests {
         	
         }
 	}
-	*/
-	/*
+	
 	@Test
 	public void t1_2() {
 		try {
@@ -143,8 +141,7 @@ public class GameTests {
 	    }	
 		
 	}
-	*/
-	/*
+
 	@Test
 	public void t2_1() {
 	       
@@ -197,10 +194,8 @@ public class GameTests {
 	        fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+"T2.2: Are you generating the ships based on the parameter passed to the constructor of GameGrid? Do you generate the names of ships as specifiied?   "+ ANSI_RESET+ e);
 	    }	
 		
-	}
-	*/
+	}	
 	
-	/*
 	@Test
 	public void t2_3() {
 	       
@@ -262,7 +257,7 @@ public class GameTests {
 	    }	
 		
 	}
-	*/
+	
 	
 	
 	@Test
@@ -390,7 +385,7 @@ public class GameTests {
 	    }	
 		
 	}
-	/*
+	
 	
 	@Test
 	public void t3_1() {
@@ -400,7 +395,7 @@ public class GameTests {
 			GameControls game = new Game (10,10,3); 
 			
 			//check if conversion works
-			OpponentGameGrid grid1 = (OpponentGameGrid) game.getOpponentssGrid(); 
+			OpponentGameGrid grid1 = (OpponentGameGrid) game.getOpponentsGrid(); 
 			
 			//check if conversion works
 			PlayerGameGrid grid2 = (PlayerGameGrid) game.getPlayersGrid(); 
@@ -428,7 +423,7 @@ public class GameTests {
 			GameControls game = new Game (4,4,1); 
 			
 			//check if conversion works
-			OpponentGameGrid grid1 = (OpponentGameGrid) game.getOpponentssGrid(); 
+			OpponentGameGrid grid1 = (OpponentGameGrid) game.getOpponentsGrid(); 
 			
 			//check if conversion works
 			PlayerGameGrid grid2 = (PlayerGameGrid) game.getPlayersGrid(); 
@@ -469,7 +464,7 @@ public class GameTests {
 					Game game = new Game (4,4,1); 
 					
 					//find out where opponent's ship is
-					int coordinates [][] = ((OpponentGameGrid) game.getOpponentssGrid()).ships[0].shipCoordinates;
+					int coordinates [][] = ((OpponentGameGrid) game.getOpponentsGrid()).ships[0].shipCoordinates;
 					
 					game.playRound(coordinates[0][0] +","+coordinates[0][1]);
 					
@@ -537,9 +532,9 @@ public class GameTests {
 					
 			        
 			    } catch (Exception | Error e) {
-			        fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+"T3.4: Something is wrong with you rplayRound method. Check your code and also code of this test to see what is expected when your method is called.    "+ ANSI_RESET+ e);
+			        fail(ANSI_WHITE_BACKGROUND +ANSI_BLACK+"T3.4: Something is wrong with you playRound method. Check your code and also code of this test to see what is expected when your method is called.    "+ ANSI_RESET+ e);
 			    }	
 		
 	}
-*/
+
 }

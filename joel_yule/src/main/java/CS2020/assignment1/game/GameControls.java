@@ -10,5 +10,5 @@ public interface GameControls {
 	
 	public AbstractGameGrid getPlayersGrid ();
 	
-	public AbstractGameGrid getOpponentssGrid ();
+	public AbstractGameGrid getOpponentsGrid ();
 }

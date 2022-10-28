@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CS2020.assignment1.game.GameTests" time="0.036" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CS2020.assignment1.game.GameTests" time="0.114" tests="11" errors="0" skipped="0" failures="1">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/zulu-11-amd64/lib"/>
-    <property name="sun.java.command" value="/home/codio/workspace/joel_yule/target/surefire/surefirebooter6184709469281939697.jar /home/codio/workspace/joel_yule/target/surefire 2022-10-27T15-56-35_255-jvmRun1 surefire4180270598095834205tmp surefire_0108796771995481868tmp"/>
+    <property name="sun.java.command" value="/home/codio/workspace/joel_yule/target/surefire/surefirebooter1125100560252913802.jar /home/codio/workspace/joel_yule/target/surefire 2022-10-28T10-23-04_278-jvmRun1 surefire15499976582337567858tmp surefire_016753561269951271766tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/codio/workspace/joel_yule/target/test-classes:/home/codio/workspace/joel_yule/target/classes:/root/.m2/repository/junit/junit/4.11/junit-4.11.jar:/root/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="jdk.vendor.version" value="Zulu11.41+23-CA"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/codio/workspace/joel_yule/target/surefire/surefirebooter6184709469281939697.jar"/>
+    <property name="surefire.real.class.path" value="/home/codio/workspace/joel_yule/target/surefire/surefirebooter1125100560252913802.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.8+10-LTS"/>
     <property name="user.name" value="root"/>
@@ -58,5 +58,19 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="t2_4" classname="CS2020.assignment1.game.GameTests" time="0.002"/>
+  <testcase name="t1_1_a" classname="CS2020.assignment1.game.GameTests" time="0.002"/>
+  <testcase name="t1_1_b" classname="CS2020.assignment1.game.GameTests" time="0"/>
+  <testcase name="t1_2" classname="CS2020.assignment1.game.GameTests" time="0.001"/>
+  <testcase name="t1_3" classname="CS2020.assignment1.game.GameTests" time="0.001"/>
+  <testcase name="t2_1" classname="CS2020.assignment1.game.GameTests" time="0.001"/>
+  <testcase name="t2_2" classname="CS2020.assignment1.game.GameTests" time="0"/>
+  <testcase name="t2_3" classname="CS2020.assignment1.game.GameTests" time="0.065"/>
+  <testcase name="t2_4" classname="CS2020.assignment1.game.GameTests" time="0.001"/>
+  <testcase name="t3_1" classname="CS2020.assignment1.game.GameTests" time="0.001"/>
+  <testcase name="t3_3" classname="CS2020.assignment1.game.GameTests" time="0.001"/>
+  <testcase name="t3_4" classname="CS2020.assignment1.game.GameTests" time="0.005">
+    <failure message="&amp;#27;[47m&amp;#27;[30mT3.4: Something is wrong with you playRound method. Check your code and also code of this test to see what is expected when your method is called.    &amp;#27;[0mjava.lang.AssertionError" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: &amp#27;[47m&amp#27;[30mT3.4: Something is wrong with you playRound method. Check your code and also code of this test to see what is expected when your method is called.    &amp#27;[0mjava.lang.AssertionError
+	at CS2020.assignment1.game.GameTests.t3_4(GameTests.java:535)
+]]></failure>
+  </testcase>
 </testsuite>
