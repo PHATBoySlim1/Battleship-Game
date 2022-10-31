@@ -85,7 +85,7 @@ public class Game implements GameControls{
 
     //Exit method
     public void exitGame(String input){
-        if(input == "exit"){
+        if(input.equals("exit")){
             System.out.println("Exiting game - thank you for playing!");
             System.exit(0);
         }
