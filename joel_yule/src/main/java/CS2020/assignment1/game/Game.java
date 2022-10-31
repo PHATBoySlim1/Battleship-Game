@@ -14,7 +14,8 @@ public class Game implements GameControls{
     }
 
     public void playRound(String input){
-
+        
+        //Splits the string coordinates input into 2 separate int values for coordinates 
         String[] splitInput = input.split(",",0);
         int x = Integer.parseInt(splitInput[0]);
         int y = Integer.parseInt(splitInput[1]);
@@ -31,18 +32,25 @@ public class Game implements GameControls{
         pGameGrid.printGrid();
     }
 
+    //Method to check whether the coordinates passed are a hit or miss
     public void hitOrMiss(AbstractGameGrid currentGameGrid,int x,int y){
+        //Loops for the number of ships on the current game grid being checked
         for(int i=0;i<currentGameGrid.ships.length;i++){
+            //Loops for the length of each ship
             for(int j=0;j<3;j++){
+                //Checks if the current ships coordinates match the input coordinates
                 if(currentGameGrid.ships[i].shipCoordinates[j][0] == x && currentGameGrid.ships[i].shipCoordinates[j][1] == y){
                     System.out.println("HIT "+currentGameGrid.ships[i].name+"!!!");
+                    //Increments value of hits by 1
                     currentGameGrid.ships[i].hits++;
+                    //Updates game grid to display where the hit was
                     currentGameGrid.gameGrid[x][y] = "X";
                     return;
                 }
             }
         }
         System.out.println("MISS!!!");
+        //Updates game grid to display where the miss was
         currentGameGrid.gameGrid[x][y] = "%";
     }
 

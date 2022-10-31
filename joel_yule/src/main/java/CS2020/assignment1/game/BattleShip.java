@@ -5,8 +5,10 @@ public class BattleShip extends AbstractBattleShip {
     Random rand = new Random();
 
     public BattleShip(String n) {
+        //Sets name of current object's name to value passed into constructor
         this.name = n;
 
+        //Generates either 0 or 1 to determine the orientation
         int randomNum = rand.nextInt(2);
 
         //Sets the random orientation of the ship
@@ -18,6 +20,7 @@ public class BattleShip extends AbstractBattleShip {
         }
     }
 
+    //Setters and getters
     public void setHits(int numberOfHits){
         this.hits = numberOfHits;
     }
@@ -31,6 +34,7 @@ public class BattleShip extends AbstractBattleShip {
     public String getShipOrientation(){return shipOrientation;}
     public int[][] getShipCoordinates(){return shipCoordinates;}
 
+    //Method to check if the attack was a hit or not
     public boolean checkAttack(int row, int column){
         if(hits == 3){
             return false;
