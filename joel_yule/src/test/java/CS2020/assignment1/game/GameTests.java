@@ -499,9 +499,9 @@ public class GameTests {
 			       
 			        
 			        // we only have one ship and it can't have this shape so there has to be at least one miss
+                    outContent.reset();
 			        game.playRound("0,0");
 			        game.playRound("0,1");
-			        outContent.reset();
 			        game.playRound("1,0");
 			        
 			        output = outContent.toString().trim(); 
