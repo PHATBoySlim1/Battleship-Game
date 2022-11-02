@@ -29,14 +29,14 @@ public class BattleShip extends AbstractBattleShip {
         this.shipCoordinates = coordinates;
     }
 
-    public String getName() {return name;}
-    public int getHits() {return hits;}
-    public String getShipOrientation(){return shipOrientation;}
-    public int[][] getShipCoordinates(){return shipCoordinates;}
+    public String getName() {return this.name;}
+    public int getHits() {return this.hits;}
+    public String getShipOrientation(){return this.shipOrientation;}
+    public int[][] getShipCoordinates(){return this.shipCoordinates;}
 
     //Method to check if the attack was a hit or not
     public boolean checkAttack(int row, int column){
-        if(hits == 3){
+        if(getHits() == 3){
             return false;
         }
         else {
