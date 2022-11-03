@@ -44,46 +44,41 @@ public class GameGrid extends AbstractGameGrid {
         //Places ship horizontally
         if(ship.shipOrientation == "horizontal"){
             for(int i=0;i<3;i++){
-                //Checks if the coordinates are on the edge of the grid and if so, places it in the opposite direction of the edge
                 if((randomX-2) < 0){
-                    gameGrid[randomY][randomX+i] = "*";
+                    gameGrid[randomX+i][randomY] = "*";
                     shipCoords[i][1] = (randomX+i);
                     shipCoords[i][0] = randomY;
                 }
                 else if(randomX+2 > gameGrid[0].length){
-                    gameGrid[randomY][randomX-i] = "*";
+                    gameGrid[randomX-i][randomY] = "*";
                     shipCoords[i][1] = (randomX-i);
                     shipCoords[i][0] = randomY;
                 }
                 else{
-                    gameGrid[randomY][randomX-i] = "*";
+                    gameGrid[randomX-i][randomY] = "*";
                     shipCoords[i][1] = (randomX-i);
                     shipCoords[i][0] = randomY;
                 }
-                //Sets the coordinates of the current ship
                 ship.setShipCoordinates(shipCoords);
             }
         }
-        //Places ship vertically
         else if(ship.shipOrientation == "vertical"){
             for(int i=0;i<3;i++){
-                //Checks if the coordinates are on the edge of the grid and if so, places it in the opposite direction of the edge
                 if((randomY-2) < 0){
-                    gameGrid[randomY+i][randomX] = "*";
+                    gameGrid[randomX][randomY+i] = "*";
                     shipCoords[i][1] = randomX;
                     shipCoords[i][0] = (randomY+i);
                 }
                 else if(randomY+2 > gameGrid.length){
-                    gameGrid[randomY-i][randomX] = "*";
+                    gameGrid[randomX][randomY-i] = "*";
                     shipCoords[i][1] = randomX;
                     shipCoords[i][0] = (randomY-i);
                 }
                 else{
-                    gameGrid[randomY-i][randomX] = "*";
+                    gameGrid[randomX][randomY-i] = "*";
                     shipCoords[i][1] = randomX;
                     shipCoords[i][0] = (randomY-i);
                 }
-                //Sets the coordinates of the current ship
                 ship.setShipCoordinates(shipCoords);
             }
         }

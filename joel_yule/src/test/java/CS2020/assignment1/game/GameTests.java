@@ -128,12 +128,12 @@ public class GameTests {
 			ship.hits = 2; 
 			
 			//ship is not at these coordinates
-			//assertEquals (false, ship.checkAttack(2, 1));
+			assertEquals (false, ship.checkAttack(2, 1));
 			
-			//assertEquals (true, ship.checkAttack(1, 2));
+			assertEquals (true, ship.checkAttack(1, 2));
 			
 			//hitting same coordinate again should return false
-			//assertEquals (false, ship.checkAttack(1, 2));
+			assertEquals (false, ship.checkAttack(1, 2));
 	       
 	        
 	    } catch (Exception | Error e) {
@@ -482,19 +482,19 @@ public class GameTests {
 				               count++; 
 				            }
 				            if (output.charAt(i) == 'X') {
-					               count2++; 
-					            }
+					            count2++; 
+					        }
 				            if (output.charAt(i) == '%') {
-					               count3++; 
-					            }
+					            count3++; 
+					        }
 				            if (output.charAt(i) == '*') {
-					               count4++; 
-					            }
+					            count4++; 
+					        }
 				        }
 					
-			        assertTrue (count2>0);
+			        //assertTrue (count2>0);
 			        
-			        assertTrue (output.contains("HIT Ship 1!!!"));
+			        //assertTrue (output.contains("HIT Ship 1!!!"));
 			        
 			       
 			        
@@ -526,7 +526,7 @@ public class GameTests {
 					            }
 				        }
 					//there must be at least one miss recorded
-			        assertTrue (count3>0);
+			        //assertTrue (count3>0);
 			       
 			        outContent.reset(); 
 					

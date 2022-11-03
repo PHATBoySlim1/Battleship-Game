@@ -22,25 +22,24 @@ public class Game implements GameControls{
         int totalHits = 0;
         
         System.out.println("Player is attacking!");
-        for(int i=0;i<oGameGrid.ships.length;i++){
-            if(oGameGrid.ships[i].checkAttack(y,x) == true){
-                if(oGameGrid.gameGrid[y][x] != "X"){
+        if(oGameGrid.gameGrid[y][x] != "X" && oGameGrid.gameGrid[y][x] != "%"){
+            for(int i=0;i<oGameGrid.ships.length;i++){
+                if(oGameGrid.ships[i].checkAttack(y,x) == true){
                     oGameGrid.ships[i].hits++;
                     totalHits++;
                     System.out.println("HIT "+oGameGrid.ships[i].name+"!!!");
                 }
-                else{
-                    System.out.println("You have hit this position before!");
-                    totalHits++;
-                }
+            }
+            if(totalHits > 0){
+                oGameGrid.gameGrid[y][x] = "X";
+            }
+            else{
+                System.out.println("MISS!!!");
+                oGameGrid.gameGrid[y][x] = "%";
             }
         }
-        if(totalHits > 0){
-            oGameGrid.gameGrid[y][x] = "X";
-        }
         else{
-            System.out.println("MISS!!!");
-            oGameGrid.gameGrid[y][x] = "%";
+            System.out.println("This position has previously been attacked!");
         }
         
         oGameGrid.printGrid();
@@ -50,24 +49,21 @@ public class Game implements GameControls{
         totalHits = 0;
         
         System.out.println("Opponent is attacking!");
-        for(int j=0;j<pGameGrid.ships.length;j++){
-            if(pGameGrid.ships[j].checkAttack(opponentY,opponentX) == true){
-                if(pGameGrid.gameGrid[opponentY][opponentX] != "X"){
+        if(pGameGrid.gameGrid[opponentY][opponentX] != "X" && pGameGrid.gameGrid[opponentY][opponentX] != "%"){
+            for(int j=0;j<pGameGrid.ships.length;j++){
+                if(pGameGrid.ships[j].checkAttack(opponentY,opponentX) == true){
                     pGameGrid.ships[j].hits++;
                     totalHits++;
                     System.out.println("HIT "+pGameGrid.ships[j].name+"!!!");
                 }
-                else{
-                    totalHits++;
-                }
             }
-        }
-        if(totalHits > 0){
-            pGameGrid.gameGrid[opponentY][opponentX] = "X";
-        }
-        else{
-            System.out.println("MISS!!!");
-            pGameGrid.gameGrid[opponentY][opponentX] = "%";
+            if(totalHits > 0){
+                pGameGrid.gameGrid[opponentY][opponentX] = "X";
+            }
+            else{
+                System.out.println("MISS!!!");
+                pGameGrid.gameGrid[opponentY][opponentX] = "%";
+            }
         }
         pGameGrid.printGrid();
     }
