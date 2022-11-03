@@ -19,39 +19,57 @@ public class Game implements GameControls{
         String[] splitInput = input.split(",",0);
         int x = Integer.parseInt(splitInput[0]);
         int y = Integer.parseInt(splitInput[1]);
+        int totalHits = 0;
         
         System.out.println("Player is attacking!");
-        hitOrMiss(oGameGrid,x,y);
-        oGameGrid.printGrid();
-        
-        int opponentX = rand.nextInt(pGameGrid.gameGrid.length);
-        int opponentY = rand.nextInt(pGameGrid.gameGrid[0].length);
-        
-        System.out.println("Opponent is attacking!");
-        hitOrMiss(pGameGrid,opponentX,opponentY);
-        pGameGrid.printGrid();
-    }
-
-    //Method to check whether the coordinates passed are a hit or miss
-    public void hitOrMiss(AbstractGameGrid currentGameGrid,int x,int y){
-        //Loops for the number of ships on the current game grid being checked
-        for(int i=0;i<currentGameGrid.ships.length;i++){
-            //Loops for the length of each ship
-            for(int j=0;j<3;j++){
-                //Checks if the current ships coordinates match the input coordinates
-                if(currentGameGrid.ships[i].shipCoordinates[j][0] == x && currentGameGrid.ships[i].shipCoordinates[j][1] == y){
-                    System.out.println("HIT "+currentGameGrid.ships[i].name+"!!!");
-                    //Increments value of hits by 1
-                    currentGameGrid.ships[i].hits++;
-                    //Updates game grid to display where the hit was
-                    currentGameGrid.gameGrid[x][y] = "X";
-                    return;
+        for(int i=0;i<oGameGrid.ships.length;i++){
+            if(oGameGrid.ships[i].checkAttack(y,x) == true){
+                if(oGameGrid.gameGrid[y][x] != "X"){
+                    oGameGrid.ships[i].hits++;
+                    totalHits++;
+                    System.out.println("HIT "+oGameGrid.ships[i].name+"!!!");
+                }
+                else{
+                    System.out.println("You have hit this position before!");
+                    totalHits++;
                 }
             }
         }
-        System.out.println("MISS!!!");
-        //Updates game grid to display where the miss was
-        currentGameGrid.gameGrid[x][y] = "%";
+        if(totalHits > 0){
+            oGameGrid.gameGrid[y][x] = "X";
+        }
+        else{
+            System.out.println("MISS!!!");
+            oGameGrid.gameGrid[y][x] = "%";
+        }
+        
+        oGameGrid.printGrid();
+        
+        int opponentX = rand.nextInt(pGameGrid.gameGrid[0].length);
+        int opponentY = rand.nextInt(pGameGrid.gameGrid.length);
+        totalHits = 0;
+        
+        System.out.println("Opponent is attacking!");
+        for(int j=0;j<pGameGrid.ships.length;j++){
+            if(pGameGrid.ships[j].checkAttack(opponentY,opponentX) == true){
+                if(pGameGrid.gameGrid[opponentY][opponentX] != "X"){
+                    pGameGrid.ships[j].hits++;
+                    totalHits++;
+                    System.out.println("HIT "+pGameGrid.ships[j].name+"!!!");
+                }
+                else{
+                    totalHits++;
+                }
+            }
+        }
+        if(totalHits > 0){
+            pGameGrid.gameGrid[opponentY][opponentX] = "X";
+        }
+        else{
+            System.out.println("MISS!!!");
+            pGameGrid.gameGrid[opponentY][opponentX] = "%";
+        }
+        pGameGrid.printGrid();
     }
 
     public boolean checkVictory(){
@@ -60,17 +78,17 @@ public class Game implements GameControls{
         //Loop for number of ships
         for(int i=0;i<pGameGrid.ships.length;i++){
             //If number of hits on the current ship equals 3 increase the number of ships destroyed by 1
-            if(pGameGrid.ships[i].hits == 3){
+            if(pGameGrid.ships[i].getHits() == 3){
                 shipsDestroyed++;
                 //If the number of ships destroyed equals the number of ships
                 if(shipsDestroyed == pGameGrid.ships.length){
                     //Lose scenario
                     System.out.println("You have lost!");
-                    return false;
+                    return true;
                 }
             }
             //If number of hits on the current ship equals 3 increase the number of ships destroyed by 1
-            else if(oGameGrid.ships[i].hits == 3){
+            else if(oGameGrid.ships[i].getHits() == 3){
                 shipsDestroyed++;
                 //If the number of ships destroyed equals the number of ships
                 if(shipsDestroyed == oGameGrid.ships.length){
