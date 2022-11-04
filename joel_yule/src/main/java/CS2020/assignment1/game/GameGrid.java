@@ -44,21 +44,25 @@ public class GameGrid extends AbstractGameGrid {
         //Places ship vertically
         if(ship.shipOrientation == "vertical"){
             for(int i=0;i<3;i++){
+                //If the randomly generated Y coordinate minus 2 is less than 0 (out of bounds) then the ship must be placed in the opposite direction
                 if((randomY-2) < 0){
                     gameGrid[randomY+i][randomX] = "*";
                     shipCoords[i][0] = randomX;
                     shipCoords[i][1] = randomY+i;
                 }
+                //If the randomly generated Y coordinate plus 2 is more than the height of the grid (out of bounds) then the ship must be placed in the opposite direction
                 else if(randomY+2 > gameGrid[0].length){
                     gameGrid[randomY-i][randomX] = "*";
                     shipCoords[i][0] = randomX;
                     shipCoords[i][1] = randomY-i;
                 }
+                //Place ship
                 else{
                     gameGrid[randomY-i][randomX] = "*";
                     shipCoords[i][1] = randomX;
                     shipCoords[i][0] = randomY-i;
                 }
+                //Set ship's coordinates
                 ship.setShipCoordinates(shipCoords);
             }
         }

@@ -44,6 +44,7 @@ public class BattleShip extends AbstractBattleShip {
             for(int i=0;i<shipCoordinates.length;i++){
                 //Checks the passed coordinates against the ships coordinates
                 if(shipCoordinates[i][0] == row && shipCoordinates[i][1] == column){
+                    //Increase number of hits
                     setHits(getHits()+1);
                     return true;
                 }

@@ -22,7 +22,9 @@ public class Game implements GameControls{
         int totalHits = 0;
         
         System.out.println("Player is attacking!");
+        //Checks if the current grid location is either a hit or a miss to detect whether the player has attacked here before
         if(oGameGrid.gameGrid[y][x] != "X" && oGameGrid.gameGrid[y][x] != "%"){
+            //If they haven't attacked before, then it loops for the number of ships and if the attack is a hit. The number of hits on all ships with that coordinate increases by 1
             for(int i=0;i<oGameGrid.ships.length;i++){
                 if(oGameGrid.ships[i].checkAttack(x,y) == true){
                     totalHits++;
