@@ -24,8 +24,7 @@ public class Game implements GameControls{
         System.out.println("Player is attacking!");
         if(oGameGrid.gameGrid[y][x] != "X" && oGameGrid.gameGrid[y][x] != "%"){
             for(int i=0;i<oGameGrid.ships.length;i++){
-                if(oGameGrid.ships[i].checkAttack(y,x) == true){
-                    oGameGrid.ships[i].hits++;
+                if(oGameGrid.ships[i].checkAttack(x,y) == true){
                     totalHits++;
                     System.out.println("HIT "+oGameGrid.ships[i].name+"!!!");
                 }
@@ -51,8 +50,7 @@ public class Game implements GameControls{
         System.out.println("Opponent is attacking!");
         if(pGameGrid.gameGrid[opponentY][opponentX] != "X" && pGameGrid.gameGrid[opponentY][opponentX] != "%"){
             for(int j=0;j<pGameGrid.ships.length;j++){
-                if(pGameGrid.ships[j].checkAttack(opponentY,opponentX) == true){
-                    pGameGrid.ships[j].hits++;
+                if(pGameGrid.ships[j].checkAttack(opponentX,opponentY) == true){
                     totalHits++;
                     System.out.println("HIT "+pGameGrid.ships[j].name+"!!!");
                 }
@@ -70,14 +68,15 @@ public class Game implements GameControls{
 
     public boolean checkVictory(){
         //Variable to check if all ships have been destroyed
-        int shipsDestroyed = 0;
+        int pShipsDestroyed = 0;
+        int oShipsDestroyed = 0;
         //Loop for number of ships
         for(int i=0;i<pGameGrid.ships.length;i++){
             //If number of hits on the current ship equals 3 increase the number of ships destroyed by 1
             if(pGameGrid.ships[i].getHits() == 3){
-                shipsDestroyed++;
+                pShipsDestroyed++;
                 //If the number of ships destroyed equals the number of ships
-                if(shipsDestroyed == pGameGrid.ships.length){
+                if(pShipsDestroyed == pGameGrid.ships.length){
                     //Lose scenario
                     System.out.println("You have lost!");
                     return true;
@@ -85,9 +84,9 @@ public class Game implements GameControls{
             }
             //If number of hits on the current ship equals 3 increase the number of ships destroyed by 1
             else if(oGameGrid.ships[i].getHits() == 3){
-                shipsDestroyed++;
+                oShipsDestroyed++;
                 //If the number of ships destroyed equals the number of ships
-                if(shipsDestroyed == oGameGrid.ships.length){
+                if(oShipsDestroyed == oGameGrid.ships.length){
                     //Win scenario
                     System.out.println("You have won!");
                     return true;

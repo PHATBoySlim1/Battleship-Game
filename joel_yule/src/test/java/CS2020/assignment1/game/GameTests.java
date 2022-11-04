@@ -492,9 +492,9 @@ public class GameTests {
 					        }
 				        }
 					
-			        //assertTrue (count2>0);
+			        assertTrue (count2>0);
 			        
-			        //assertTrue (output.contains("HIT Ship 1!!!"));
+			        assertTrue (output.contains("HIT Ship 1!!!"));
 			        
 			       
 			        
@@ -526,7 +526,7 @@ public class GameTests {
 					            }
 				        }
 					//there must be at least one miss recorded
-			        //assertTrue (count3>0);
+			        assertTrue (count3>0);
 			       
 			        outContent.reset(); 
 					
